@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Sudoku
 {
     class Board
@@ -20,12 +21,12 @@ namespace Sudoku
             return game_board;
         }
 
-        /*static Board getNewBoardInst()
+        static Board getNewBoardInst()
         {
             b = generate_board()
             return Board(b);
         }
-        */
+        
         private byte[,] GenerateBoard()
         {
             Random rnd = new Random();
@@ -40,28 +41,65 @@ namespace Sudoku
 
                 if (isValid(brd, num, x, y))
                 {
-                    brd[x, y] = num;
+                    brd[x, y] = (byte)(-num);
                 }
             }
 
             return brd;
         }
+
+        private int GetSection(int pos)
+        {
+            return Math.Floor(pos/3)*3;
+        }
+
         private bool isValid(byte[,] brd, byte num, int x, int y)
         {
             bool valid = true;
-            for(int i = 0; i < 10; i++)
+            int x_sector = GetSection(x);
+            int y_sector = GetSection(y);
+
+            if(brd[x,y] < 0)
             {
-                if(brd[i,y] == num)
+                return false;
+            }
+
+            for(int i = x_sector; i < x_sector+3; i++) // Check section
+            {
+                for(int j = y_sector; j < y_sector+3; j++)
                 {
-                    valid = false;
-                }
-                if (brd[x, i] == num)
-                {
-                    valid = false;
+                    if(Math.Abs(brd[i,j]) == num)
+                    {
+                        return false;
+                    }
                 }
             }
-            return valid;
+            for(int i = 0; i < 10; i++) // Check Column+Row
+            {
+                if(Math.Abs(brd[i,y]) == num)
+                {
+                    return false;
+                }
+                if(Math.Abs(brd[x, i]) == num)
+                {
+                    return false;
+                }
+            }
+
+            //Check that other section have a spot open for num
+
+
+
+            return true;
         }
+        void PlaceNum(byte num, int x, int y)
+        {
+            if(isValid(game_board, num, x, y))
+            {
+                game_board[x,y] = num;
+            }
+        }
+
         bool Win()
         {
             return false;
