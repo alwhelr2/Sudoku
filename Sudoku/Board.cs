@@ -9,22 +9,33 @@ namespace Sudoku
 {
     class Board
     {
-        public byte[,] game_board;
-
-        private Board(byte [,] new_b)
+        public byte[,] Game_Board
         {
-            game_board = new_b;
+            get;
         }
 
-        byte[,] GetBoard()
+        private Board()
+        {
+            //Generate empty board for now
+            Game_Board = new byte[,] { { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+        }
+
+        /*
+        public byte[,] GetBoard()
         {
             return game_board;
-        }
+        }*/
 
+        /*
         static Board getNewBoardInst()
         {
-            b = generate_board()
+            b = generate_board();
             return Board(b);
+        }*/
+
+        public static Board getNewBoardInst()
+        {
+            return new Board();
         }
         
         private byte[,] GenerateBoard()
@@ -50,9 +61,16 @@ namespace Sudoku
 
         private int GetSection(int pos)
         {
-            return Math.Floor(pos/3)*3;
+            return (int)Math.Floor((float)(pos/3))*3;
         }
 
+        //TODO: isvalidmove
+        public bool isValidMove(byte num, byte x, byte y)
+        {
+            return true;
+        }
+
+        //Why are you passing the board to the method if the method has access to the game_board instance variable?
         private bool isValid(byte[,] brd, byte num, int x, int y)
         {
             bool valid = true;
@@ -94,9 +112,9 @@ namespace Sudoku
         }
         void PlaceNum(byte num, int x, int y)
         {
-            if(isValid(game_board, num, x, y))
+            if(isValid(Game_Board, num, x, y))
             {
-                game_board[x,y] = num;
+                Game_Board[x,y] = num;
             }
         }
 
