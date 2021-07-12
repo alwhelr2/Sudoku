@@ -21,7 +21,7 @@ namespace Sudoku
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+         #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -140,8 +140,6 @@ namespace Sudoku
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button2
             // 
@@ -151,7 +149,6 @@ namespace Sudoku
             this.button2.TabIndex = 1;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button3
             // 
@@ -161,7 +158,6 @@ namespace Sudoku
             this.button3.TabIndex = 2;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button4
             // 
@@ -171,7 +167,6 @@ namespace Sudoku
             this.button4.TabIndex = 3;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button5
             // 
@@ -181,7 +176,6 @@ namespace Sudoku
             this.button5.TabIndex = 4;
             this.button5.Text = "button5";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button6
             // 
@@ -191,7 +185,6 @@ namespace Sudoku
             this.button6.TabIndex = 5;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button7
             // 
@@ -201,7 +194,6 @@ namespace Sudoku
             this.button7.TabIndex = 6;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button8
             // 
@@ -211,7 +203,6 @@ namespace Sudoku
             this.button8.TabIndex = 7;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button9
             // 
@@ -221,7 +212,6 @@ namespace Sudoku
             this.button9.TabIndex = 8;
             this.button9.Text = "button9";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button10
             // 
@@ -231,7 +221,6 @@ namespace Sudoku
             this.button10.TabIndex = 9;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
-            this.button10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button11
             // 
@@ -241,7 +230,6 @@ namespace Sudoku
             this.button11.TabIndex = 10;
             this.button11.Text = "button11";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button12
             // 
@@ -251,7 +239,6 @@ namespace Sudoku
             this.button12.TabIndex = 11;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
-            this.button12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button13
             // 
@@ -261,7 +248,6 @@ namespace Sudoku
             this.button13.TabIndex = 12;
             this.button13.Text = "button13";
             this.button13.UseVisualStyleBackColor = true;
-            this.button13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button14
             // 
@@ -271,7 +257,6 @@ namespace Sudoku
             this.button14.TabIndex = 13;
             this.button14.Text = "button14";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button15
             // 
@@ -281,7 +266,6 @@ namespace Sudoku
             this.button15.TabIndex = 14;
             this.button15.Text = "button15";
             this.button15.UseVisualStyleBackColor = true;
-            this.button15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button16
             // 
@@ -291,7 +275,6 @@ namespace Sudoku
             this.button16.TabIndex = 15;
             this.button16.Text = "button16";
             this.button16.UseVisualStyleBackColor = true;
-            this.button16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button17
             // 
@@ -301,7 +284,6 @@ namespace Sudoku
             this.button17.TabIndex = 16;
             this.button17.Text = "button17";
             this.button17.UseVisualStyleBackColor = true;
-            this.button17.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button18
             // 
@@ -311,7 +293,6 @@ namespace Sudoku
             this.button18.TabIndex = 17;
             this.button18.Text = "button18";
             this.button18.UseVisualStyleBackColor = true;
-            this.button18.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button19
             // 
@@ -321,7 +302,6 @@ namespace Sudoku
             this.button19.TabIndex = 18;
             this.button19.Text = "button19";
             this.button19.UseVisualStyleBackColor = true;
-            this.button19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button20
             // 
@@ -331,7 +311,6 @@ namespace Sudoku
             this.button20.TabIndex = 19;
             this.button20.Text = "button20";
             this.button20.UseVisualStyleBackColor = true;
-            this.button20.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button21
             // 
@@ -341,7 +320,6 @@ namespace Sudoku
             this.button21.TabIndex = 20;
             this.button21.Text = "button21";
             this.button21.UseVisualStyleBackColor = true;
-            this.button21.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button22
             // 
@@ -351,7 +329,6 @@ namespace Sudoku
             this.button22.TabIndex = 21;
             this.button22.Text = "button22";
             this.button22.UseVisualStyleBackColor = true;
-            this.button22.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button23
             // 
@@ -361,7 +338,6 @@ namespace Sudoku
             this.button23.TabIndex = 22;
             this.button23.Text = "button23";
             this.button23.UseVisualStyleBackColor = true;
-            this.button23.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button24
             // 
@@ -371,7 +347,6 @@ namespace Sudoku
             this.button24.TabIndex = 23;
             this.button24.Text = "button24";
             this.button24.UseVisualStyleBackColor = true;
-            this.button24.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button25
             // 
@@ -381,7 +356,6 @@ namespace Sudoku
             this.button25.TabIndex = 24;
             this.button25.Text = "button25";
             this.button25.UseVisualStyleBackColor = true;
-            this.button25.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button26
             // 
@@ -391,7 +365,6 @@ namespace Sudoku
             this.button26.TabIndex = 25;
             this.button26.Text = "button26";
             this.button26.UseVisualStyleBackColor = true;
-            this.button26.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button27
             // 
@@ -401,7 +374,6 @@ namespace Sudoku
             this.button27.TabIndex = 26;
             this.button27.Text = "button27";
             this.button27.UseVisualStyleBackColor = true;
-            this.button27.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button28
             // 
@@ -411,7 +383,6 @@ namespace Sudoku
             this.button28.TabIndex = 27;
             this.button28.Text = "button28";
             this.button28.UseVisualStyleBackColor = true;
-            this.button28.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button29
             // 
@@ -421,7 +392,6 @@ namespace Sudoku
             this.button29.TabIndex = 28;
             this.button29.Text = "button29";
             this.button29.UseVisualStyleBackColor = true;
-            this.button29.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button30
             // 
@@ -431,7 +401,6 @@ namespace Sudoku
             this.button30.TabIndex = 29;
             this.button30.Text = "button30";
             this.button30.UseVisualStyleBackColor = true;
-            this.button30.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button31
             // 
@@ -441,7 +410,6 @@ namespace Sudoku
             this.button31.TabIndex = 30;
             this.button31.Text = "button31";
             this.button31.UseVisualStyleBackColor = true;
-            this.button31.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button32
             // 
@@ -451,7 +419,6 @@ namespace Sudoku
             this.button32.TabIndex = 31;
             this.button32.Text = "button32";
             this.button32.UseVisualStyleBackColor = true;
-            this.button32.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button33
             // 
@@ -461,7 +428,6 @@ namespace Sudoku
             this.button33.TabIndex = 32;
             this.button33.Text = "button33";
             this.button33.UseVisualStyleBackColor = true;
-            this.button33.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button34
             // 
@@ -471,7 +437,6 @@ namespace Sudoku
             this.button34.TabIndex = 33;
             this.button34.Text = "button34";
             this.button34.UseVisualStyleBackColor = true;
-            this.button34.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button35
             // 
@@ -481,7 +446,6 @@ namespace Sudoku
             this.button35.TabIndex = 34;
             this.button35.Text = "button35";
             this.button35.UseVisualStyleBackColor = true;
-            this.button35.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button36
             // 
@@ -491,7 +455,6 @@ namespace Sudoku
             this.button36.TabIndex = 35;
             this.button36.Text = "button36";
             this.button36.UseVisualStyleBackColor = true;
-            this.button36.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button37
             // 
@@ -501,7 +464,6 @@ namespace Sudoku
             this.button37.TabIndex = 36;
             this.button37.Text = "button37";
             this.button37.UseVisualStyleBackColor = true;
-            this.button37.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button38
             // 
@@ -511,7 +473,6 @@ namespace Sudoku
             this.button38.TabIndex = 37;
             this.button38.Text = "button38";
             this.button38.UseVisualStyleBackColor = true;
-            this.button38.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button39
             // 
@@ -521,7 +482,6 @@ namespace Sudoku
             this.button39.TabIndex = 38;
             this.button39.Text = "button39";
             this.button39.UseVisualStyleBackColor = true;
-            this.button39.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button40
             // 
@@ -531,7 +491,6 @@ namespace Sudoku
             this.button40.TabIndex = 39;
             this.button40.Text = "button40";
             this.button40.UseVisualStyleBackColor = true;
-            this.button40.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button41
             // 
@@ -541,7 +500,6 @@ namespace Sudoku
             this.button41.TabIndex = 40;
             this.button41.Text = "button41";
             this.button41.UseVisualStyleBackColor = true;
-            this.button41.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button42
             // 
@@ -551,7 +509,6 @@ namespace Sudoku
             this.button42.TabIndex = 41;
             this.button42.Text = "button42";
             this.button42.UseVisualStyleBackColor = true;
-            this.button42.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button43
             // 
@@ -561,7 +518,6 @@ namespace Sudoku
             this.button43.TabIndex = 42;
             this.button43.Text = "button43";
             this.button43.UseVisualStyleBackColor = true;
-            this.button43.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button44
             // 
@@ -571,7 +527,6 @@ namespace Sudoku
             this.button44.TabIndex = 43;
             this.button44.Text = "button44";
             this.button44.UseVisualStyleBackColor = true;
-            this.button44.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button45
             // 
@@ -581,7 +536,6 @@ namespace Sudoku
             this.button45.TabIndex = 44;
             this.button45.Text = "button45";
             this.button45.UseVisualStyleBackColor = true;
-            this.button45.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button46
             // 
@@ -591,7 +545,6 @@ namespace Sudoku
             this.button46.TabIndex = 45;
             this.button46.Text = "button46";
             this.button46.UseVisualStyleBackColor = true;
-            this.button46.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button47
             // 
@@ -601,7 +554,6 @@ namespace Sudoku
             this.button47.TabIndex = 46;
             this.button47.Text = "button47";
             this.button47.UseVisualStyleBackColor = true;
-            this.button47.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button48
             // 
@@ -611,7 +563,6 @@ namespace Sudoku
             this.button48.TabIndex = 47;
             this.button48.Text = "button48";
             this.button48.UseVisualStyleBackColor = true;
-            this.button48.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button49
             // 
@@ -621,7 +572,6 @@ namespace Sudoku
             this.button49.TabIndex = 48;
             this.button49.Text = "button49";
             this.button49.UseVisualStyleBackColor = true;
-            this.button49.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button50
             // 
@@ -631,7 +581,6 @@ namespace Sudoku
             this.button50.TabIndex = 49;
             this.button50.Text = "button50";
             this.button50.UseVisualStyleBackColor = true;
-            this.button50.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button51
             // 
@@ -641,7 +590,6 @@ namespace Sudoku
             this.button51.TabIndex = 50;
             this.button51.Text = "button51";
             this.button51.UseVisualStyleBackColor = true;
-            this.button51.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button52
             // 
@@ -651,7 +599,6 @@ namespace Sudoku
             this.button52.TabIndex = 51;
             this.button52.Text = "button52";
             this.button52.UseVisualStyleBackColor = true;
-            this.button52.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button53
             // 
@@ -661,7 +608,6 @@ namespace Sudoku
             this.button53.TabIndex = 52;
             this.button53.Text = "button53";
             this.button53.UseVisualStyleBackColor = true;
-            this.button53.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button54
             // 
@@ -671,7 +617,6 @@ namespace Sudoku
             this.button54.TabIndex = 53;
             this.button54.Text = "button54";
             this.button54.UseVisualStyleBackColor = true;
-            this.button54.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button55
             // 
@@ -681,7 +626,6 @@ namespace Sudoku
             this.button55.TabIndex = 54;
             this.button55.Text = "button55";
             this.button55.UseVisualStyleBackColor = true;
-            this.button55.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button56
             // 
@@ -691,7 +635,6 @@ namespace Sudoku
             this.button56.TabIndex = 55;
             this.button56.Text = "button56";
             this.button56.UseVisualStyleBackColor = true;
-            this.button56.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button57
             // 
@@ -701,7 +644,6 @@ namespace Sudoku
             this.button57.TabIndex = 56;
             this.button57.Text = "button57";
             this.button57.UseVisualStyleBackColor = true;
-            this.button57.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button58
             // 
@@ -711,7 +653,6 @@ namespace Sudoku
             this.button58.TabIndex = 57;
             this.button58.Text = "button58";
             this.button58.UseVisualStyleBackColor = true;
-            this.button58.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button59
             // 
@@ -721,7 +662,6 @@ namespace Sudoku
             this.button59.TabIndex = 58;
             this.button59.Text = "button59";
             this.button59.UseVisualStyleBackColor = true;
-            this.button59.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button60
             // 
@@ -731,7 +671,6 @@ namespace Sudoku
             this.button60.TabIndex = 59;
             this.button60.Text = "button60";
             this.button60.UseVisualStyleBackColor = true;
-            this.button60.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button61
             // 
@@ -741,7 +680,6 @@ namespace Sudoku
             this.button61.TabIndex = 60;
             this.button61.Text = "button61";
             this.button61.UseVisualStyleBackColor = true;
-            this.button61.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button62
             // 
@@ -751,7 +689,6 @@ namespace Sudoku
             this.button62.TabIndex = 61;
             this.button62.Text = "button62";
             this.button62.UseVisualStyleBackColor = true;
-            this.button62.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button63
             // 
@@ -761,7 +698,6 @@ namespace Sudoku
             this.button63.TabIndex = 62;
             this.button63.Text = "button63";
             this.button63.UseVisualStyleBackColor = true;
-            this.button63.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button64
             // 
@@ -771,7 +707,6 @@ namespace Sudoku
             this.button64.TabIndex = 63;
             this.button64.Text = "button64";
             this.button64.UseVisualStyleBackColor = true;
-            this.button64.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button65
             // 
@@ -781,7 +716,6 @@ namespace Sudoku
             this.button65.TabIndex = 64;
             this.button65.Text = "button65";
             this.button65.UseVisualStyleBackColor = true;
-            this.button65.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button66
             // 
@@ -791,7 +725,6 @@ namespace Sudoku
             this.button66.TabIndex = 65;
             this.button66.Text = "button66";
             this.button66.UseVisualStyleBackColor = true;
-            this.button66.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button67
             // 
@@ -801,7 +734,6 @@ namespace Sudoku
             this.button67.TabIndex = 66;
             this.button67.Text = "button67";
             this.button67.UseVisualStyleBackColor = true;
-            this.button67.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button68
             // 
@@ -811,7 +743,6 @@ namespace Sudoku
             this.button68.TabIndex = 67;
             this.button68.Text = "button68";
             this.button68.UseVisualStyleBackColor = true;
-            this.button68.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button69
             // 
@@ -821,7 +752,6 @@ namespace Sudoku
             this.button69.TabIndex = 68;
             this.button69.Text = "button69";
             this.button69.UseVisualStyleBackColor = true;
-            this.button69.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button70
             // 
@@ -831,7 +761,6 @@ namespace Sudoku
             this.button70.TabIndex = 69;
             this.button70.Text = "button70";
             this.button70.UseVisualStyleBackColor = true;
-            this.button70.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button71
             // 
@@ -841,7 +770,6 @@ namespace Sudoku
             this.button71.TabIndex = 70;
             this.button71.Text = "button71";
             this.button71.UseVisualStyleBackColor = true;
-            this.button71.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button72
             // 
@@ -851,7 +779,6 @@ namespace Sudoku
             this.button72.TabIndex = 71;
             this.button72.Text = "button72";
             this.button72.UseVisualStyleBackColor = true;
-            this.button72.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button73
             // 
@@ -861,7 +788,6 @@ namespace Sudoku
             this.button73.TabIndex = 72;
             this.button73.Text = "button73";
             this.button73.UseVisualStyleBackColor = true;
-            this.button73.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button74
             // 
@@ -871,7 +797,6 @@ namespace Sudoku
             this.button74.TabIndex = 73;
             this.button74.Text = "button74";
             this.button74.UseVisualStyleBackColor = true;
-            this.button74.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button75
             // 
@@ -881,7 +806,6 @@ namespace Sudoku
             this.button75.TabIndex = 74;
             this.button75.Text = "button75";
             this.button75.UseVisualStyleBackColor = true;
-            this.button75.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button76
             // 
@@ -891,7 +815,6 @@ namespace Sudoku
             this.button76.TabIndex = 75;
             this.button76.Text = "button76";
             this.button76.UseVisualStyleBackColor = true;
-            this.button76.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button77
             // 
@@ -901,7 +824,6 @@ namespace Sudoku
             this.button77.TabIndex = 76;
             this.button77.Text = "button77";
             this.button77.UseVisualStyleBackColor = true;
-            this.button77.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button78
             // 
@@ -911,7 +833,6 @@ namespace Sudoku
             this.button78.TabIndex = 77;
             this.button78.Text = "button78";
             this.button78.UseVisualStyleBackColor = true;
-            this.button78.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button79
             // 
@@ -921,7 +842,6 @@ namespace Sudoku
             this.button79.TabIndex = 78;
             this.button79.Text = "button79";
             this.button79.UseVisualStyleBackColor = true;
-            this.button79.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button80
             // 
@@ -931,7 +851,6 @@ namespace Sudoku
             this.button80.TabIndex = 79;
             this.button80.Text = "button80";
             this.button80.UseVisualStyleBackColor = true;
-            this.button80.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // button81
             // 
@@ -941,7 +860,6 @@ namespace Sudoku
             this.button81.TabIndex = 80;
             this.button81.Text = "button81";
             this.button81.UseVisualStyleBackColor = true;
-            this.button81.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button81_MouseMove);
             // 
             // pictureBox1
             // 
@@ -1044,7 +962,7 @@ namespace Sudoku
             // 
             // timer1
             // 
-            this.timer1.Interval = 16;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1

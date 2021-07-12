@@ -8,9 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
-
-
+using System.Collections;
 
 namespace Sudoku
 {
@@ -23,16 +21,19 @@ namespace Sudoku
 
         Dictionary<Tuple<byte, byte>, Button> buttonKeys;
         Dictionary<Button, Tuple<byte, byte>> buttonIndices;
+        //TODO: Get rid of using the names of the pictureBoxes
         Dictionary<PictureBox, byte> pictureBoxKeys;
         Board board;
         Tuple<bool, byte> drawImage;
         Image[] images;
         Graphics screenGraphics;
         Button currB = null;
+        Dictionary<byte, ArrayList> getNinthButtons;
 
         public Form1()
         {
             InitializeComponent();
+            this.Text = "Sudoku";
 
             buttonKeys = new Dictionary<Tuple<byte, byte>, Button>();
             buttonIndices = new Dictionary<Button, Tuple<byte, byte>>();
@@ -60,6 +61,19 @@ namespace Sudoku
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             screenGraphics = Graphics.FromHdc(GetDC(IntPtr.Zero));
+            getNinthButtons = new Dictionary<byte, ArrayList>();
+            for (int i = 0; i < 3; i++)
+                for (int j = 0; j < 3; j++)
+                {
+                    byte quadrant = (byte)((i * 3) + j);
+                    getNinthButtons[quadrant] = new ArrayList();
+                    for (int x = 0; x < 3; x++)
+                        for (int y = 0; y < 3; y++)
+                        {
+                            Button button = buttonKeys[Tuple.Create((byte)(i * 3 + x), (byte)(j * 3 + y))];
+                            getNinthButtons[quadrant].Add(button);
+                        }
+                }
         }
 
         private void setButtons(byte[,] board)
@@ -71,24 +85,25 @@ namespace Sudoku
                 {
                     Button b = getButtonFromID(counter);
                     byte id = board[i, j];
-                    setButton(b, images[id], i, j);
+                    setButton(b, id, i, j);
                     counter++;
                 }
             }
         }
 
-        private void setButton(Button b, Image i, byte row, byte col)
+        private void setButton(Button b, byte id, byte row, byte col)
         {
             var t = Tuple.Create(row, col);
             buttonKeys[t] = b;
             buttonIndices[b] = t;
-            setButtonImage(b, i);
+            setButtonImage(b, id, row, col);
         }
 
-        private void setButtonImage(Button b, Image i)
+        private void setButtonImage(Button b, byte id, byte row, byte col)
         {
-            b.Image = i;
+            b.Image = images[id];
             b.Text = "";
+            b.Tag = id;
         }
 
         private Button getButtonFromID(byte id)
@@ -131,54 +146,64 @@ namespace Sudoku
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             Button button = getMouseButton();
-            if (button != null)
+
+            timer1.Stop();
+            if (button == null)
+                return;
+
+            var bIndices = buttonIndices[button];
+
+            if (board.isValidMove(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2, getNinthButtons))
             {
-                setButtonImage(button, ((PictureBox)sender).Image);
+                
+                setButtonImage(button, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
+                button.UseVisualStyleBackColor = true;
+                board.setBoardValue(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
+                button.Tag = drawImage.Item2;
+            }
+            else
+            {
+                MessageBox.Show("Invalid move!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             drawImage = Tuple.Create(false, (byte)0);
-            timer1.Stop();
-            Invalidate();
+
+            //Reset the previous button to default state once the user lets go of the mouse button
+            if (currB != null)
+            { 
+                currB.UseVisualStyleBackColor = true;
+                currB = null;
+            }
         }
 
+        //This timer runs whenever the user is dragging a selection to the button, and ends when the user releases the mouse button
         private void timer1_Tick(object sender, EventArgs e)
         {
-            screenGraphics.DrawImage(images[drawImage.Item2], Cursor.Position);
+            //screenGraphics.DrawImage(images[drawImage.Item2], Cursor.Position);
             Button button = getMouseButton();
             if (button != null)
             {
-                var t = buttonIndices[button];
-                if (board.isValidMove(drawImage.Item2, t.Item1, t.Item2))
-                    button.BackColor = Color.Green;
+                //Case:  we are entering a new button and it's different from the old one
+                if (currB != button)
+                {
+                    var b1 = buttonIndices[button];
+                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, getNinthButtons))
+                        button.BackColor = Color.Green;
+                    else
+                        button.BackColor = Color.Red;
 
-                else
-                    button.BackColor = Color.Red;
+                    button.Invalidate();
+                    if (currB != null)
+                        currB.UseVisualStyleBackColor = true;
+                    
+                    currB = button;
+                }
             }
-        }
-
-        private void button81_MouseMove(object sender, MouseEventArgs e)
-        {
-            Button b = (Button)sender;
-            if (drawImage.Item1)
+            else if (currB != null)
             {
-
-                Console.WriteLine("Moved: " + b.Name);
-                var t = buttonIndices[b];
-                if (board.isValidMove(drawImage.Item2, t.Item1, t.Item2))
-                    b.BackColor = Color.Green;
-
-                else
-                    b.BackColor = Color.Red;
-
+                currB.UseVisualStyleBackColor = true;
+                currB = null;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (button1.BackColor == Color.Red)
-                button1.BackColor = Control.DefaultBackColor;
-            else
-                button1.BackColor = Color.Red;
         }
     }
 }
