@@ -29,11 +29,13 @@ namespace Sudoku
         Graphics screenGraphics;
         Button currB = null;
         Dictionary<byte, ArrayList> getNinthButtons;
+        PopupWindow drawWindow;
 
         public Form1()
         {
             InitializeComponent();
             this.Text = "Sudoku";
+            this.AllowDrop = true;
 
             buttonKeys = new Dictionary<Tuple<byte, byte>, Button>();
             buttonIndices = new Dictionary<Button, Tuple<byte, byte>>();
@@ -43,7 +45,9 @@ namespace Sudoku
             for (byte i = 1; i < 10; i++)
             {
                 string name = "pictureBox" + i;
-                pictureBoxKeys[(PictureBox)Controls.Find(name, true)[0]] = i;
+                PictureBox box = (PictureBox)Controls.Find(name, true)[0];
+                box.AllowDrop = true;
+                pictureBoxKeys[box] = i;
             }
             images = new Image[10] {
                 null,
@@ -141,6 +145,12 @@ namespace Sudoku
             drawImage = Tuple.Create(true, id);
 
             timer1.Start();
+
+            PictureBox clonedBox = new PictureBox();
+            clonedBox.Image = box.Image;
+            clonedBox.Size = new Size(60, 60);
+            drawWindow = new PopupWindow(clonedBox);
+            drawWindow.Show(Cursor.Position);
         }
 
         private void pictureBox_MouseUp(object sender, MouseEventArgs e)
@@ -148,6 +158,15 @@ namespace Sudoku
             Button button = getMouseButton();
 
             timer1.Stop();
+            drawWindow.Close();
+            //Reset the previous button to default state once the user lets go of the mouse button
+            if (currB != null)
+            {
+                currB.UseVisualStyleBackColor = true;
+                currB = null;
+            }
+
+            drawImage = Tuple.Create(false, (byte)0);
             if (button == null)
                 return;
 
@@ -158,7 +177,6 @@ namespace Sudoku
                 
                 setButtonImage(button, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
                 button.UseVisualStyleBackColor = true;
-                board.setBoardValue(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
                 button.Tag = drawImage.Item2;
             }
             else
@@ -166,20 +184,13 @@ namespace Sudoku
                 MessageBox.Show("Invalid move!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            drawImage = Tuple.Create(false, (byte)0);
-
-            //Reset the previous button to default state once the user lets go of the mouse button
-            if (currB != null)
-            { 
-                currB.UseVisualStyleBackColor = true;
-                currB = null;
-            }
         }
 
         //This timer runs whenever the user is dragging a selection to the button, and ends when the user releases the mouse button
         private void timer1_Tick(object sender, EventArgs e)
         {
             //screenGraphics.DrawImage(images[drawImage.Item2], Cursor.Position);
+            drawWindow.Show(Cursor.Position);
             Button button = getMouseButton();
             if (button != null)
             {
