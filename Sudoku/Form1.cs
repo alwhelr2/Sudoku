@@ -165,8 +165,6 @@ namespace Sudoku
                 currB.UseVisualStyleBackColor = true;
                 currB = null;
             }
-
-            drawImage = Tuple.Create(false, (byte)0);
             if (button == null)
                 return;
 
@@ -184,6 +182,9 @@ namespace Sudoku
                 MessageBox.Show("Invalid move!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+
+            drawImage = Tuple.Create(false, (byte)0);
+
         }
 
         //This timer runs whenever the user is dragging a selection to the button, and ends when the user releases the mouse button
@@ -198,7 +199,7 @@ namespace Sudoku
                 if (currB != button)
                 {
                     var b1 = buttonIndices[button];
-                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, getNinthButtons))
+                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, getNinthButtons, false))
                         button.BackColor = Color.Green;
                     else
                         button.BackColor = Color.Red;

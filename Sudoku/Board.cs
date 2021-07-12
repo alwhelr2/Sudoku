@@ -138,6 +138,9 @@ namespace Sudoku
                 if (Game_Board[x, i] == num)
                     return false;
 
+            if (addButton)
+                Game_Board[x, y] = num;
+
             return true;
         }
 
