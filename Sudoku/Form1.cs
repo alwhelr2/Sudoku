@@ -14,21 +14,13 @@ namespace Sudoku
 {
     public partial class Form1 : Form
     {
-        [DllImport("User32.dll")]
-        public static extern IntPtr GetDC(IntPtr hwnd);
-        [DllImport("User32.dll")]
-        public static extern IntPtr ReleaseDC(IntPtr hwnd, IntPtr dc);
-
-        Dictionary<Tuple<byte, byte>, Button> buttonKeys;
         Dictionary<Button, Tuple<byte, byte>> buttonIndices;
         //TODO: Get rid of using the names of the pictureBoxes
         Dictionary<PictureBox, byte> pictureBoxKeys;
         Board board;
         Tuple<bool, byte> drawImage;
         Image[] images;
-        Graphics screenGraphics;
         Button currB = null;
-        Dictionary<byte, ArrayList> getNinthButtons;
         PopupWindow drawWindow;
 
         public Form1()
@@ -37,7 +29,6 @@ namespace Sudoku
             this.Text = "Sudoku";
             this.AllowDrop = true;
 
-            buttonKeys = new Dictionary<Tuple<byte, byte>, Button>();
             buttonIndices = new Dictionary<Button, Tuple<byte, byte>>();
             board = Board.getNewBoardInst();
             drawImage = Tuple.Create(false, (byte)0);
@@ -64,20 +55,6 @@ namespace Sudoku
             setButtons(board.Game_Board);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
-            screenGraphics = Graphics.FromHdc(GetDC(IntPtr.Zero));
-            getNinthButtons = new Dictionary<byte, ArrayList>();
-            for (int i = 0; i < 3; i++)
-                for (int j = 0; j < 3; j++)
-                {
-                    byte quadrant = (byte)((i * 3) + j);
-                    getNinthButtons[quadrant] = new ArrayList();
-                    for (int x = 0; x < 3; x++)
-                        for (int y = 0; y < 3; y++)
-                        {
-                            Button button = buttonKeys[Tuple.Create((byte)(i * 3 + x), (byte)(j * 3 + y))];
-                            getNinthButtons[quadrant].Add(button);
-                        }
-                }
         }
 
         private void setButtons(byte[,] board)
@@ -98,7 +75,6 @@ namespace Sudoku
         private void setButton(Button b, byte id, byte row, byte col)
         {
             var t = Tuple.Create(row, col);
-            buttonKeys[t] = b;
             buttonIndices[b] = t;
             setButtonImage(b, id, row, col);
         }
@@ -170,7 +146,7 @@ namespace Sudoku
 
             var bIndices = buttonIndices[button];
 
-            if (board.isValidMove(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2, getNinthButtons))
+            if (board.isValidMove(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2))
             {
                 
                 setButtonImage(button, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
@@ -199,7 +175,7 @@ namespace Sudoku
                 if (currB != button)
                 {
                     var b1 = buttonIndices[button];
-                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, getNinthButtons, false))
+                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, false))
                         button.BackColor = Color.Green;
                     else
                         button.BackColor = Color.Red;

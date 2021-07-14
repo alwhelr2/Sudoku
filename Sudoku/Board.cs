@@ -10,78 +10,42 @@ namespace Sudoku
 {
     class Board
     {
-
-
-        /*Maybe unnecessary?
-        //? after the data type means we can use store null to the variable (byte is otherwise a non-nullabe type)
-        public byte? this[int row, int col]
-        {
-            get
-            {
-                if (row < 9 && col < 9)
-                {
-                    return Game_Board[row, col];
-                }
-                else
-                {
-                    //TODO: Indices not value, throw exception?
-                    return null;
-                }
-            }
-            set
-            {
-                if (row < 9 && col < 9 && value >= 1 && value <= 9)
-                {
-                    if (value != null)
-                        Game_Board[row, col] = (byte)value;
-
-                }
-                else
-                {
-                    //TODO: Throw exception?
-                }
-            }
-        }*/
-
         public byte[,] Game_Board
         {
             get;
             private set;
         }
 
-        public void setBoardValue(byte num, byte x, byte y)
+        private static byte[,] emptyBoard = { { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 0 } };
+        private static Dictionary<byte, ArrayList> ninthButtons;
+
+        static Board()
         {
-            if (x >= 0 && y < 9 && y >= 0 && x < 9 && num >= 0 && num <= 9)
-                Game_Board[x, y] = num;
-            else
+            ninthButtons = new Dictionary<byte, ArrayList>();
+            for (byte b = 0; b < 9; b++)
+                ninthButtons[b] = new ArrayList();
+            for (byte i = 0; i < 9; i++)
             {
-                //Throw exception?
+                for (byte j = 0; j < 9; j++)
+                {
+                    byte ninth = (byte)(GetSection(i) * 3 + GetSection(j));
+                    ninthButtons[ninth].Add(Tuple.Create(i, j));
+                }
             }
         }
 
-        private Board()
+        private Board(bool empty = true)
         {
-            //Generate empty board for now
-            Game_Board = new byte[,] { { 1, 0, 0, 0, 0, 0, 0, 0, 0 }, { 0, 2, 0, 0, 0, 0, 0, 0, 0 }, { 0, 0, 3, 0, 0, 0, 0, 0, 0 }, { 0, 0, 0, 4, 0, 0, 0, 0, 0 }, { 0, 0, 0, 0, 5, 0, 0, 0, 0 }, { 0, 0, 0, 0, 0, 6, 0, 0, 0 }, { 0, 0, 0, 0, 0, 0, 7, 0, 0 }, { 0, 0, 0, 0, 0, 0, 0, 8, 0 }, { 0, 0, 0, 0, 0, 0, 0, 0, 9 } }; 
+            if (empty)
+                Game_Board = emptyBoard;
+            else
+                Game_Board = GenerateBoard();
         }
 
-        /*
-        public byte[,] GetBoard()
-        {
-            return game_board;
-        }*/
-
-        /*
-        static Board getNewBoardInst()
-        {
-            b = generate_board();
-            return Board(b);
-        }*/
-
         //Note: Maybe the static generation is unnecessary, and just make the constructor public?
-        public static Board getNewBoardInst()
+        public static Board getNewBoardInst(bool empty = true)
         {
-            return new Board();
+            return new Board(empty);
         }
         
         //Generate randomized sudoku board (Maybe parse pre-existing boards available online?)
@@ -109,7 +73,7 @@ namespace Sudoku
 
         //This method takes a row or col value and gives you the corresponding third of the board
         //0-2 will return 0, 1-3 will return 1 and 4-6 will return 2
-        private int GetSection(int pos)
+        private static int GetSection(int pos)
         {
             return (int)Math.Floor((float)(pos/3));
         }
@@ -117,17 +81,17 @@ namespace Sudoku
         //This method checks to see if a move the player makes is valid
         //Input: byte num = potential move, x = row, y = col in Game_Board (this checks quadrants and rows + cols)
         //Dictionary may be irrelevant if you can create a function that will return the corresponding byte values in the Game_Board array for a specified ninth (0-9, with 0-3 being top 3 buttons and so on)
-        public bool isValidMove(byte num, byte x, byte y, Dictionary<byte, ArrayList> getNinthButtons, bool addButton = true)
+        public bool isValidMove(byte num, byte x, byte y, bool addButton = true)
         {
+            byte q = (byte)(GetSection(x) * 3 + GetSection(y));
             //Check quadrants
-            ArrayList buttonsInQuadrant = getNinthButtons[(byte)((GetSection(x) * 3) + GetSection(y))];
+            ArrayList buttonsInQuadrant = ninthButtons[q];
             
             for (int i = 0; i < buttonsInQuadrant.Count; i++)
             {
-                Button button = (Button)buttonsInQuadrant[i];
-
                 //Check for matching nums in the same ninth
-                if ((byte)button.Tag == num)
+                Tuple<byte, byte> t = (Tuple<byte, byte>)buttonsInQuadrant[i];
+                if (Game_Board[t.Item1, t.Item2] == num)
                     return false;
             }
             //Check rows+cols
