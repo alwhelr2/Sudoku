@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Collections;
+using System.Drawing.Imaging;
 
 namespace Sudoku
 {
@@ -30,7 +31,7 @@ namespace Sudoku
             this.AllowDrop = true;
 
             buttonIndices = new Dictionary<Button, Tuple<byte, byte>>();
-            board = Board.getNewBoardInst();
+            board = Board.getNewBoardInst(false);
             drawImage = Tuple.Create(false, (byte)0);
             pictureBoxKeys = new Dictionary<PictureBox, byte>();
             for (byte i = 1; i < 10; i++)
@@ -66,24 +67,32 @@ namespace Sudoku
                 {
                     Button b = getButtonFromID(counter);
                     byte id = board[i, j];
+
                     setButton(b, id, i, j);
+                    if (id != 0)
+                    {
+                        b.Enabled = false;
+                    }
+                    setButtonImage(b, id, i, j);
+                    b.Text = "";
                     counter++;
                 }
             }
         }
 
+        
+
         private void setButton(Button b, byte id, byte row, byte col)
         {
             var t = Tuple.Create(row, col);
             buttonIndices[b] = t;
-            setButtonImage(b, id, row, col);
         }
 
         private void setButtonImage(Button b, byte id, byte row, byte col)
         {
             b.Image = images[id];
             b.Text = "";
-            b.Tag = id;
+            b.UseVisualStyleBackColor = true;
         }
 
         private Button getButtonFromID(byte id)
@@ -146,12 +155,11 @@ namespace Sudoku
 
             var bIndices = buttonIndices[button];
 
-            if (board.isValidMove(drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2))
+            if (board.isValidMove(board.Game_Board, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2))
             {
                 
                 setButtonImage(button, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
                 button.UseVisualStyleBackColor = true;
-                button.Tag = drawImage.Item2;
             }
             else
             {
@@ -175,7 +183,7 @@ namespace Sudoku
                 if (currB != button)
                 {
                     var b1 = buttonIndices[button];
-                    if (board.isValidMove(drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, false))
+                    if (board.isValidMove(board.Game_Board, drawImage.Item2, (byte)b1.Item1, (byte)b1.Item2, false))
                         button.BackColor = Color.Green;
                     else
                         button.BackColor = Color.Red;
@@ -192,6 +200,16 @@ namespace Sudoku
                 currB.UseVisualStyleBackColor = true;
                 currB = null;
             }
+        }
+
+        private void button81_Click(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            Tuple<byte, byte> t = (Tuple<byte, byte>)buttonIndices[b];
+            board.clearButton(t.Item1, t.Item2);
+            b.Enabled = true;
+            b.Invalidate();
+            setButtonImage(b, 0, t.Item1, t.Item2);
         }
     }
 }
