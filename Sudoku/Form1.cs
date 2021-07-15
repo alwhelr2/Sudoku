@@ -20,7 +20,7 @@ namespace Sudoku
         Dictionary<PictureBox, byte> pictureBoxKeys;
         Board board;
         Tuple<bool, byte> drawImage;
-        Image[] images;
+        Bitmap[] images;
         Button currB = null;
         PopupWindow drawWindow;
 
@@ -41,7 +41,7 @@ namespace Sudoku
                 box.AllowDrop = true;
                 pictureBoxKeys[box] = i;
             }
-            images = new Image[10] {
+            images = new Bitmap[10] {
                 null,
                 new Bitmap(Sudoku.Properties.Resources.s1),
                 new Bitmap(Sudoku.Properties.Resources.s2),
@@ -69,12 +69,15 @@ namespace Sudoku
                     byte id = board[i, j];
 
                     setButton(b, id, i, j);
+                    
+                    //setButtonImage(b, id, i, j);
                     if (id != 0)
                     {
                         b.Enabled = false;
+                        setButtonImage(b, id, i, j, true);
                     }
-                    setButtonImage(b, id, i, j);
-                    b.Text = "";
+                    else
+                        setButtonImage(b, id, i, j);
                     counter++;
                 }
             }
@@ -88,9 +91,9 @@ namespace Sudoku
             buttonIndices[b] = t;
         }
 
-        private void setButtonImage(Button b, byte id, byte row, byte col)
+        private void setButtonImage(Button b, byte id, byte row, byte col, bool tint = false)
         {
-            b.Image = images[id];
+            b.Image = (tint) ? images[id].ColorTint(0, 0, 0) : images[id];
             b.Text = "";
             b.UseVisualStyleBackColor = true;
         }

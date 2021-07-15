@@ -52,10 +52,15 @@ namespace Sudoku
                 { red = 255; }
 
 
+                if (red == 255 && green == 255 && blue == 255)
+                {
+                    green = 0;
+                    blue = 0;
+                }
+
                 pixelBuffer[k] = (byte)blue;
                 pixelBuffer[k + 1] = (byte)green;
                 pixelBuffer[k + 2] = (byte)red;
-
 
             }
 

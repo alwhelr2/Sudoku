@@ -159,11 +159,10 @@ namespace Sudoku
             int count = rand.Next(45, 55);
             while (count != 0)
             {
-                int cellId = (int)Math.Floor((double)(rand.Next(81) + 1)) - 1;
+                //int cellId = (int)Math.Floor((double)(rand.Next(81) + 1)) - 1;
+                int cellId = (int)(Math.Floor(rand.NextDouble() * 81 + 1)) - 1;
                 int i = (cellId / 9);
                 int j = cellId % 9;
-                if (j != 0)
-                    j = j - 1;
 
                 if (board[i, j] != 0)
                 {
