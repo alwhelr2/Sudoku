@@ -223,7 +223,13 @@ namespace Sudoku
             this.Text = "Sudoku Time " + min.ToString() + ":" + sec.ToString();
             if(timerTicks >= 10)
             {
+                timer1.Stop();
                 timer2.Stop();
+                if (drawWindow != null)
+                    drawWindow.Close();
+                if (currB != null)
+                    currB.UseVisualStyleBackColor = true;
+                drawImage = (Tuple<bool, byte>)Tuple.Create(false, (byte)0);
                 MessageBox.Show("Time's Up", "LOSER", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
