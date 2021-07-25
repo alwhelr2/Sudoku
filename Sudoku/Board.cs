@@ -277,11 +277,21 @@ namespace Sudoku
             {
                 Game_Board[x,y] = num;
             }
-        }
-
-        bool Win()
-        {
-            return false;
         }*/
+
+        public bool Win()
+        {
+            for(int i = 0; i < 9; i++)
+            {
+                for(int j = 0; j < 9; j++)
+                {
+                    if(Game_Board[i,j] == 0)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

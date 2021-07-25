@@ -23,6 +23,8 @@ namespace Sudoku
         Bitmap[] images;
         Button currB = null;
         PopupWindow drawWindow;
+        bool timeToGame;
+        int timerTicks = 0;
 
         public Form1()
         {
@@ -56,6 +58,9 @@ namespace Sudoku
             setButtons(board.Game_Board);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            bool tG = true;
+            timeToGame = tG;
+            timer2.Start();
         }
 
         private void setButtons(byte[,] board)
@@ -163,6 +168,11 @@ namespace Sudoku
                 
                 setButtonImage(button, drawImage.Item2, (byte)bIndices.Item1, (byte)bIndices.Item2);
                 button.UseVisualStyleBackColor = true;
+                if(board.Win())
+                {
+                    MessageBox.Show("You Win", "WINNER", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    timer2.Stop();
+                }
             }
             else
             {
@@ -202,6 +212,19 @@ namespace Sudoku
             {
                 currB.UseVisualStyleBackColor = true;
                 currB = null;
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            timerTicks = timerTicks + 1;
+            int sec = timerTicks % 60;
+            int min = timerTicks / 60;
+            this.Text = "Sudoku Time " + min.ToString() + ":" + sec.ToString();
+            if(timerTicks >= 10)
+            {
+                timer2.Stop();
+                MessageBox.Show("Time's Up", "LOSER", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
